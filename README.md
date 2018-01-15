@@ -1,19 +1,19 @@
 Steps to Update Pod
 -------------------
 For New Install Only:
-pod repo add DoubleNodeSpecs https://github.com/DoubleNode/SpecsPrivateRepo.git
-pod repo update DoubleNodeSpecs
+pod repo add Four23Creative https://github.com/Four23Creative/SpecsPrivateRepo.git
+pod repo update Four23Creative
 
 1. Check local files
-pod lib lint --sources=git@github.com:DoubleNode/SpecsPrivateRepo.git,master --private
+pod lib lint --sources=git@github.com:Four23Creative/SpecsPrivateRepo.git,master --private
 
 2. Create tag and push to github
 
 3. Check repo file
-pod spec lint --sources=git@github.com:DoubleNode/SpecsPrivateRepo.git,master --private
+pod spec lint --sources=git@github.com:Four23Creative/SpecsPrivateRepo.git,master --private
 
 4. Final Submit
-pod repo push DoubleNodeSpecs WKRSD_Cache_Worker.podspec
+pod repo push Four23Creative WKRSD_Cache_Worker.podspec
 
 
 Steps to Resource Podfile Pods

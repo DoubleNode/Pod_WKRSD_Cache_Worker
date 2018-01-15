@@ -1,4 +1,4 @@
-source 'git@github.com:DoubleNode/SpecsPrivateRepo.git'
+source 'git@github.com:Four23Creative/SpecsPrivateRepo.git'
 source 'https://github.com/CocoaPods/Specs.git'
 
 use_frameworks!
