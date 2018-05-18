@@ -22,6 +22,7 @@
 #define ERROR_BAD_PARAMETER     1003
 #define ERROR_BAD_RESPONSE      1004
 #define ERROR_SERVER_ERROR      1005
+#define ERROR_URL_MISMATCH      1006
 
 + (instancetype _Nonnull)worker   {   return [self worker:nil]; }
 
@@ -104,8 +105,8 @@
      }];
 }
 
-- (void)doLoadImageWithUrl:(nonnull NSURL*)url
-                 withBlock:(nullable PTCLCacheBlockVoidUIImageNSDataNSErrorNSURL)block;
+- (void)doLoadImageForUrl:(nonnull NSURL*)url
+                withBlock:(nullable PTCLCacheBlockVoidIDNSError)block
 {
     if (!url.absoluteString.length)
     {
@@ -114,7 +115,7 @@
                                            userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"The ID was invalid.", nil),
                                                        NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Unable to load object without a valid ID.", nil)
                                                        }];
-        block ? block(nil, nil, error, url) : (void)nil;
+        block ? block(nil, error) : (void)nil;
         return;
     }
     
@@ -124,7 +125,37 @@
                                             completed:
      ^(UIImage* _Nullable image, NSData* _Nullable data, NSError* _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL* _Nullable imageURL)
      {
-         block ? block(image, data, error, imageURL) : (void)nil;
+         if (error)
+         {
+             block ? block(nil, error) : (void)nil;
+             return;
+         }
+         
+         if (![imageURL.absoluteString isEqualToString:url])
+         {
+             // Incorrect image download completed
+             NSError*   error = [NSError errorWithDomain:ERROR_DOMAIN_CLASS
+                                                    code:ERROR_URL_MISMATCH
+                                                userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"Image URL Mismatch.", nil),
+                                                            NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"The image downloaded doesn't match the URL expected.", nil)
+                                                            }];
+             block ? block(nil, error) : (void)nil;
+             return;
+         }
+         
+         [self doSaveObject:image
+                      forId:url.absoluteString
+                  withBlock:
+          ^(NSError* _Nullable error)
+          {
+              if (error)
+              {
+                  block ? block(nil, error) : (void)nil;
+                  return;
+              }
+
+              block ? block(image, nil) : (void)nil;
+          }];
      }];
 }
 
