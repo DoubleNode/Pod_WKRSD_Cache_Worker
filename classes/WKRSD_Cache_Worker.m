@@ -119,42 +119,53 @@
         return;
     }
     
-    [SDWebImageManager.sharedManager loadImageWithURL:url
-                                              options:0
-                                             progress:nil
-                                            completed:
-     ^(UIImage* _Nullable image, NSData* _Nullable data, NSError* _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL* _Nullable imageURL)
-     {
-         if (error)
-         {
-             block ? block(nil, error) : (void)nil;
-             return;
-         }
-         
-         if (![imageURL.absoluteString isEqualToString:url])
-         {
-             // Incorrect image download completed
-             NSError*   error = [NSError errorWithDomain:ERROR_DOMAIN_CLASS
-                                                    code:ERROR_URL_MISMATCH
-                                                userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"Image URL Mismatch.", nil),
-                                                            NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"The image downloaded doesn't match the URL expected.", nil)
-                                                            }];
-             block ? block(nil, error) : (void)nil;
-             return;
-         }
-         
-         [self doSaveObject:image
-                      forId:url.absoluteString
+    [self doLoadObjectForId:url.absoluteString
                   withBlock:
-          ^(NSError* _Nullable error)
+     ^(id _Nullable object, NSError* _Nullable error)
+     {
+         if (object && [object isKindOfClass:UIImage.class])
+         {
+             block ? block(object, error) : (void)nil;
+             return;
+         }
+         
+         [SDWebImageManager.sharedManager loadImageWithURL:url
+                                                   options:0
+                                                  progress:nil
+                                                 completed:
+          ^(UIImage* _Nullable image, NSData* _Nullable data, NSError* _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL* _Nullable imageURL)
           {
               if (error)
               {
                   block ? block(nil, error) : (void)nil;
                   return;
               }
-
-              block ? block(image, nil) : (void)nil;
+              
+              if (![imageURL.absoluteString isEqualToString:url])
+              {
+                  // Incorrect image download completed
+                  NSError*   error = [NSError errorWithDomain:ERROR_DOMAIN_CLASS
+                                                         code:ERROR_URL_MISMATCH
+                                                     userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"Image URL Mismatch.", nil),
+                                                                 NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"The image downloaded doesn't match the URL expected.", nil)
+                                                                 }];
+                  block ? block(nil, error) : (void)nil;
+                  return;
+              }
+              
+              [self doSaveObject:image
+                           forId:url.absoluteString
+                       withBlock:
+               ^(NSError* _Nullable error)
+               {
+                   if (error)
+                   {
+                       block ? block(nil, error) : (void)nil;
+                       return;
+                   }
+                   
+                   block ? block(image, nil) : (void)nil;
+               }];
           }];
      }];
 }

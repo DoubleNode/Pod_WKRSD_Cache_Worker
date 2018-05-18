@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "WKRSD_Cache_Worker"
-  s.version      = "0.2.3"
+  s.version      = "0.2.4"
   s.summary      = "A SDWebImage Cacheworker."
 
   s.description  = <<-DESC
