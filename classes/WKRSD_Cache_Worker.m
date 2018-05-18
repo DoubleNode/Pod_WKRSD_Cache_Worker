@@ -7,6 +7,7 @@
 //
 
 #import <SDWebImage/SDImageCache.h>
+#import <SDWebImage/SDWebImageManager.h>
 
 #import "WKRSD_Cache_Worker.h"
 
@@ -100,6 +101,30 @@
                                                         NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Unable to load object.", nil)
                                                         }];
          block ? block(nil, error) : (void)nil;
+     }];
+}
+
+- (void)doLoadImageWithUrl:(nonnull NSURL*)url
+                 withBlock:(nullable PTCLCacheBlockVoidUIImageNSDataNSErrorNSURL)block;
+{
+    if (!url.absoluteString.length)
+    {
+        NSError*   error = [NSError errorWithDomain:ERROR_DOMAIN_CLASS
+                                               code:ERROR_BAD_PARAMETER
+                                           userInfo:@{ NSLocalizedDescriptionKey: NSLocalizedString(@"The ID was invalid.", nil),
+                                                       NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Unable to load object without a valid ID.", nil)
+                                                       }];
+        block ? block(nil, nil, error, url) : (void)nil;
+        return;
+    }
+    
+    [SDWebImageManager.sharedManager loadImageWithURL:url
+                                              options:0
+                                             progress:nil
+                                            completed:
+     ^(UIImage* _Nullable image, NSData* _Nullable data, NSError* _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL* _Nullable imageURL)
+     {
+         block ? block(image, data, error, imageURL) : (void)nil;
      }];
 }
 
