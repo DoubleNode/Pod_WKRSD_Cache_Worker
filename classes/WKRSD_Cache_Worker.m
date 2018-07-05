@@ -141,7 +141,7 @@
                   return;
               }
               
-              if (![imageURL.absoluteString isEqualToString:url])
+              if (![imageURL isEqual:url])
               {
                   // Incorrect image download completed
                   NSError*   error = [NSError errorWithDomain:ERROR_DOMAIN_CLASS
