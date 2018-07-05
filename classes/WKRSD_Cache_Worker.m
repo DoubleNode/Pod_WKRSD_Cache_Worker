@@ -16,7 +16,7 @@
 @synthesize nextBaseWorker;
 @synthesize nextCacheWorker;
 
-#define ERROR_DOMAIN_CLASS      [NSString stringWithFormat:@"com.doublenode.rentmywardrobe.%@", NSStringFromClass([self class])]
+#define ERROR_DOMAIN_CLASS      [NSString stringWithFormat:@"com.doublenode.%@", NSStringFromClass([self class])]
 #define ERROR_UNKNOWN           1001
 #define ERROR_NOT_FOUND         1002
 #define ERROR_BAD_PARAMETER     1003
