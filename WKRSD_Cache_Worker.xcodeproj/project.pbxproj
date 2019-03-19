@@ -263,7 +263,7 @@
 		6ADA77BE1E536F6600F65B2F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = DoubleNode.com;
 				TargetAttributes = {
 					6ADA77C51E536F6600F65B2F = {
@@ -291,6 +291,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -376,7 +377,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-WKRSD_Cache_Worker/Pods-WKRSD_Cache_Worker-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-WKRSD_Cache_Worker/Pods-WKRSD_Cache_Worker-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/ColorUtils/ColorUtils.framework",
 				"${BUILT_PRODUCTS_DIR}/DNCProtocols/DNCProtocols.framework",
@@ -397,7 +398,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WKRSD_Cache_Worker/Pods-WKRSD_Cache_Worker-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WKRSD_Cache_Worker/Pods-WKRSD_Cache_Worker-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F97D2813F93DBDDE351A8F6D /* [CP] Embed Pods Frameworks */ = {
@@ -406,7 +407,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-WKRSD_Cache_WorkerTests/Pods-WKRSD_Cache_WorkerTests-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-WKRSD_Cache_WorkerTests/Pods-WKRSD_Cache_WorkerTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Gizou/Gizou.framework",
 				"${BUILT_PRODUCTS_DIR}/OCMock/OCMock.framework",
 			);
@@ -417,7 +418,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WKRSD_Cache_WorkerTests/Pods-WKRSD_Cache_WorkerTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WKRSD_Cache_WorkerTests/Pods-WKRSD_Cache_WorkerTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -489,6 +490,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -545,6 +547,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -602,7 +605,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.DoubleNode.WKRSD-Cache-Worker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -617,7 +620,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.DoubleNode.WKRSD-Cache-Worker";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};

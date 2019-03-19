@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "WKRSD_Cache_Worker"
-  s.version      = "0.3.0"
+  s.version      = "0.3.1"
   s.summary      = "A SDWebImage Cacheworker."
 
   s.description  = <<-DESC
@@ -14,9 +14,9 @@ Pod::Spec.new do |s|
   s.author             = { "Darren Ehlers" => "me@darrenehlers.com" }
   s.social_media_url   = "http://twitter.com/ehlersd"
 
-  s.platform     = :ios, "10.0"
-
-  s.source = { :git => "https://github.com/DoubleNode/Pod_WKRSD_Cache_Worker.git", :tag => "#{s.version}" }
+  s.platform        = :ios, "11.0"
+  s.source          = { :git => "https://github.com/DoubleNode/Pod_WKRSD_Cache_Worker.git", :tag => "#{s.version}" }
+  s.swift_version   = "4.2"
 
   s.source_files  = "Classes", "Classes/**/*.{h,m}"
   s.exclude_files = "Classes/Exclude"

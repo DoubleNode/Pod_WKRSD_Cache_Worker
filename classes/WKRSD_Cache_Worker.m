@@ -66,7 +66,8 @@
 #pragma mark - Business Logic / Single Item CRUD
 
 - (void)doLoadObjectForId:(nonnull NSString*)cacheId
-                withBlock:(nullable PTCLCacheBlockVoidIDNSError)block
+             withProgress:(nullable PTCLProgressBlock)progressBlock
+                 andBlock:(nullable PTCLCacheBlockVoidIDNSError)block
 {
     if (!cacheId.length)
     {
@@ -106,7 +107,8 @@
 }
 
 - (void)doLoadImageForUrl:(nonnull NSURL*)url
-                withBlock:(nullable PTCLCacheBlockVoidIDNSError)block
+             withProgress:(nullable PTCLProgressBlock)progressBlock
+                 andBlock:(nullable PTCLCacheBlockVoidIDNSError)block
 {
     if (!url.absoluteString.length)
     {
@@ -120,7 +122,8 @@
     }
     
     [self doLoadObjectForId:url.absoluteString
-                  withBlock:
+               withProgress:progressBlock
+                   andBlock:
      ^(id _Nullable object, NSError* _Nullable error)
      {
          if (object && [object isKindOfClass:UIImage.class])
@@ -155,7 +158,8 @@
               
               [self doSaveObject:image
                            forId:url.absoluteString
-                       withBlock:
+                    withProgress:progressBlock
+                        andBlock:
                ^(NSError* _Nullable error)
                {
                    if (error)
@@ -171,7 +175,8 @@
 }
 
 - (void)doDeleteObjectForId:(nonnull NSString*)cacheId
-                  withBlock:(nullable PTCLCacheBlockVoidNSError)block
+               withProgress:(nullable PTCLProgressBlock)progressBlock
+                   andBlock:(nullable PTCLCacheBlockVoidNSError)block
 {
     if (!cacheId.length)
     {
@@ -194,7 +199,8 @@
 
 - (void)doSaveObject:(nonnull id)object
                forId:(nonnull NSString*)cacheId
-           withBlock:(nullable PTCLCacheBlockVoidNSError)block
+        withProgress:(nullable PTCLProgressBlock)progressBlock
+            andBlock:(nullable PTCLCacheBlockVoidNSError)block
 {
     if (!cacheId.length)
     {
