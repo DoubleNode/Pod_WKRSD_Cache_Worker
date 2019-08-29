@@ -40,6 +40,7 @@
 /* Begin PBXFileReference section */
 		024256920B99D6E0B0059F0C /* Pods_WKRSD_Cache_Worker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WKRSD_Cache_Worker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		393E4E265635D61E5ADAA906 /* Pods_WKRSD_Cache_WorkerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WKRSD_Cache_WorkerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AC77C6C23186F7E004EF336 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		6ADA77C61E536F6600F65B2F /* WKRSD_Cache_Worker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WKRSD_Cache_Worker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6ADA77CA1E536F6600F65B2F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6ADA77CC1E536F6600F65B2F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -181,6 +182,7 @@
 		6ADA77FC1E536F9D00F65B2F /* Pod */ = {
 			isa = PBXGroup;
 			children = (
+				6AC77C6C23186F7E004EF336 /* LICENSE */,
 				6ADA78021E536FBE00F65B2F /* README.md */,
 				6ADA78031E536FBE00F65B2F /* WKRSD_Cache_Worker.podspec */,
 				6ADA77FD1E536FA200F65B2F /* Classes */,
